@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Aashayein</string>
+    <string name="facebook_app_id">975343219235147</string>
+    <string name="fb_login_protocol_scheme">fb975343219235147</string>
+</resources>
