@@ -54,7 +54,7 @@ public class Splash extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
 
 
-                loginButton.setVisibility(View.GONE);
+//                loginButton.setVisibility(View.GONE);
 
                 GraphRequest graphRequest   =   GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback()
                 {
@@ -74,7 +74,7 @@ public class Splash extends AppCompatActivity {
                             tvfirst_name.setText("first name = "+first_name);
                             tvlast_namee.setText("last name = "+last_name);
                             tvfull_name.setText("name = "+name);
-                            LoginManager.getInstance().logOut();
+//                            LoginManager.getInstance().logOut();
                         }
                         catch (JSONException e)
                         {
@@ -91,9 +91,9 @@ public class Splash extends AppCompatActivity {
                 info.setText(
                         "User ID: "
                                 + loginResult.getAccessToken().getUserId()
-//                                + "\n" +
-//                                "Auth Token: "
-//                                + loginResult.getAccessToken().getToken()
+                                + "\n" +
+                                "Auth Token: "
+                                + loginResult.getAccessToken().getToken()
                 );
 
             }
