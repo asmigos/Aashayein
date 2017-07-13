@@ -30,7 +30,7 @@ public class Splash extends AppCompatActivity {
 
                 }
 
-                Intent i = new Intent(Splash.this, FacebookActivity.class);
+                Intent i = new Intent(Splash.this, LoginActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(i);
                 finish();
