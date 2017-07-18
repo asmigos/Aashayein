@@ -1,8 +1,10 @@
 package com.example.hp.aashayein;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,11 +19,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
 import com.facebook.Profile;
@@ -37,6 +43,10 @@ public class HomeActivity extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    private WebView wv1;
+    static TextView titleTextView;
+
     private ShareDialog shareDialog;
 
     @Override
@@ -45,6 +55,12 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        titleTextView=(TextView)findViewById(R.id.titleTextView);
+
+
+        wv1=(WebView)findViewById(R.id.webView);
+        wv1.setWebViewClient(new MyBrowser());
 
 
         Bundle inBundle = getIntent().getExtras();
@@ -55,30 +71,21 @@ public class HomeActivity extends AppCompatActivity
 
 
 
-
         shareDialog = new ShareDialog(this);
 
+
+
+        String url ="https://www.facebook.com/aashayeinthelifesaviours/";
+
+        wv1.getSettings().setLoadsImagesAutomatically(true);
+        wv1.getSettings().setJavaScriptEnabled(true);
+        wv1.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        wv1.loadUrl(url);
 
 
 
         FacebookSdk.sdkInitialize(getApplicationContext());
 
-
-
-        WebView myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.loadUrl("http://www.facebook.com");
-
-
-        Button logout = (Button)findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LoginManager.getInstance().logOut();
-                Intent login = new Intent(HomeActivity.this, Splash.class);
-                startActivity(login);
-                finish();
-            }
-        });
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -99,27 +106,25 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
-//        TextView nameView = (TextView)findViewById(R.id.nameAndSurname);
-//        nameView.setText("" + name + " " + surname + " \n " + email);
-//        new DownloadImage((ImageView)findViewById(R.id.profileImage)).execute(imageUrl);
-
-
         View hView =  navigationView.inflateHeaderView(R.layout.nav_header_home);
-        TextView emailtv = (TextView)hView.findViewById(R.id.emailtextview);
+//        TextView emailtv = (TextView)hView.findViewById(R.id.emailtextview);
         TextView nametv = (TextView)hView.findViewById(R.id.nameAndSurnametextview);
         nametv.setText(name + " " + surname);
-        emailtv.setText(email);
+//        emailtv.setText(email);
         new DownloadImage((ImageView)hView.findViewById(R.id.profileimageView)).execute(imageUrl);
-
-
-
-
 
 
     }
 
+
+
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+    }
 
 
     public class DownloadImage extends AsyncTask<String, Void, Bitmap> {
@@ -186,39 +191,34 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_Request_form) {
+            Intent login = new Intent(HomeActivity.this, RequestFormActivity.class);
+            startActivity(login);
+            finish();
+//            titleTextView.setText("Request Form");
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_current_request) {
+            Intent login = new Intent(HomeActivity.this, RequestFormActivity.class);
+            startActivity(login);
+            finish();
+            titleTextView.setText("Current Request");
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_Current_Requirement) {
+            Intent login = new Intent(HomeActivity.this, HomeActivity.class);
+            startActivity(login);
+            finish();
+
+        } else if (id == R.id.nav_logout) {
+            LoginManager.getInstance().logOut();
+            Intent login = new Intent(HomeActivity.this, Splash.class);
+            startActivity(login);
+            finish();
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
         }
-
-
-
-//
-//        Bundle inBundle = getIntent().getExtras();
-//        String name = inBundle.get("name").toString();
-//        String surname = inBundle.get("surname").toString();
-//        String imageUrl = inBundle.get("imageUrl").toString();
-//        String email = inBundle.get("email").toString();
-//
-//
-//
-//
-//
-//
-//        TextView nameViewnav = (TextView)findViewById(R.id.nameAndSurnametextview);
-//        nameViewnav.setText("" + name + " " + surname);
-//        TextView emailnav = (TextView)findViewById(R.id.emailtextview);
-//        emailnav.setText("" + email);
-//        new DownloadImage((ImageView)findViewById(R.id.profileimageView)).execute(imageUrl);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

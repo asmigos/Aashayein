@@ -1,14 +1,26 @@
 <resources>
     <string name="app_name">Aashayein</string>
+    <string name="request_form">Request Form</string>
     <string name="facebook_app_id">975343219235147</string>
     <string name="fb_login_protocol_scheme">fb975343219235147</string>
 
-    <string name="email">Enter Your Email</string>
+    <string name="email">Enter Email</string>
     <string name="fragment_login_password_hint">Enter Password</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home"> </string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="bName">Beneficiary Name</string>
+    <string name="bContact">Beneficiary Contact</string>
+    <string name="bloodGrp">Blood Group</string>
+    <string name="hName">Hospital Name</string>
+    <string name="pName">Patient Name</string>
+    <string name="dName">Doctor Name</string>
+    <string name="dContact">Doctor Contact</string>
+    <string name="diName">Disease Name</string>
+    <string name="pFrom">Patient From ?</string>
+    <string name="bFrom">Beneficiary From ?</string>
 
     <string name="action_settings">Settings</string>
 </resources>
