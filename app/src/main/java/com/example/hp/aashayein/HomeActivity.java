@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity
 
 
     private WebView wv1;
-    static TextView titleTextView;
+
 
     private ShareDialog shareDialog;
 
@@ -56,7 +56,7 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        titleTextView=(TextView)findViewById(R.id.titleTextView);
+
 
 
         wv1=(WebView)findViewById(R.id.webView);
@@ -81,6 +81,7 @@ public class HomeActivity extends AppCompatActivity
         wv1.getSettings().setJavaScriptEnabled(true);
         wv1.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         wv1.loadUrl(url);
+
 
 
 
@@ -192,27 +193,30 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_Request_form) {
+            RequestFormActivity.a = 1;
             Intent login = new Intent(HomeActivity.this, RequestFormActivity.class);
             startActivity(login);
-            finish();
-//            titleTextView.setText("Request Form");
+
+
 
         } else if (id == R.id.nav_current_request) {
+            RequestFormActivity.a = 2;
             Intent login = new Intent(HomeActivity.this, RequestFormActivity.class);
             startActivity(login);
-            finish();
-            titleTextView.setText("Current Request");
+            //RequestFormActivity.titleTextView.setText("Current Request");
 
         } else if (id == R.id.nav_Current_Requirement) {
             Intent login = new Intent(HomeActivity.this, HomeActivity.class);
             startActivity(login);
-            finish();
+//            RequestFormActivity.titleTextView=(TextView)findViewById(R.id.titleTextView);
+          //  finish();
 
         } else if (id == R.id.nav_logout) {
             LoginManager.getInstance().logOut();
             Intent login = new Intent(HomeActivity.this, Splash.class);
+            login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(login);
-            finish();
+          //  finish();
 
         } else if (id == R.id.nav_share) {
 

@@ -17,7 +17,6 @@
             android:background="@color/colorPrimary"
             android:textStyle="bold"
             android:textColor="@color/colorAccent"
-            android:text="Request Form"
             android:textSize="20sp"
             android:gravity="center"/>
 

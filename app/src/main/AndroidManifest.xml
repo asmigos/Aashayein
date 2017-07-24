@@ -39,9 +39,11 @@
             android:authorities="com.facebook.app.FacebookContentProvider"
             android:exported="true" />
 
-        <activity android:name=".RequestFormActivity"
+        <activity
+            android:name=".RequestFormActivity"
             android:label="@string/request_form"
-            android:theme="@style/AppTheme1"></activity>
+            android:theme="@style/AppTheme1" />
+        <activity android:name=".VerificationActivity"></activity>
     </application>
 
 </manifest>
