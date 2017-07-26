@@ -107,12 +107,12 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        View hView =  navigationView.inflateHeaderView(R.layout.nav_header_home);
+        //View hView =  navigationView.inflateHeaderView(R.layout.nav_header_home);
 //        TextView emailtv = (TextView)hView.findViewById(R.id.emailtextview);
-        TextView nametv = (TextView)hView.findViewById(R.id.nameAndSurnametextview);
+        TextView nametv = (TextView)findViewById(R.id.nameAndSurnametextview);
         nametv.setText(name + " " + surname);
 //        emailtv.setText(email);
-        new DownloadImage((ImageView)hView.findViewById(R.id.profileimageView)).execute(imageUrl);
+        new DownloadImage((ImageView)findViewById(R.id.profileimageView)).execute(imageUrl);
 
 
     }

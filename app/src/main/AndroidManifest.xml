@@ -43,7 +43,9 @@
             android:name=".RequestFormActivity"
             android:label="@string/request_form"
             android:theme="@style/AppTheme1" />
-        <activity android:name=".VerificationActivity"></activity>
+        <activity android:name=".VerificationActivity" />
+        <activity android:name=".SignUpActivity"
+            android:label="@string/title_activity_signup"></activity>
     </application>
 
 </manifest>

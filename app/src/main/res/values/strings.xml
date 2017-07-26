@@ -8,6 +8,8 @@
     <string name="fragment_login_password_hint">Enter Password</string>
     <string name="title_activity_home"> </string>
 
+    <string name="title_activity_signup"> Registration Page </string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -21,6 +23,8 @@
     <string name="diName">Disease Name</string>
     <string name="pFrom">Patient From ?</string>
     <string name="bFrom">Beneficiary From ?</string>
+
+    <string name="name">Enter name</string>
 
     <string name="action_settings">Settings</string>
 </resources>
